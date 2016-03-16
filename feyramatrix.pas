@@ -8,7 +8,7 @@ uses
   Classes;
 
 type
-  FeyraMatrix = class
+  TFeyraMatrix = class
     private
       type
         VarRow = Array of variant;
@@ -42,27 +42,27 @@ type
   @member(Columns Число столбцов матрицы)
   @member(All Запрос или запись матрицы целиком)}
 
-  FeyraIntMatrix = class(FeyraMatrix)
+  FeyraIntMatrix = class(TFeyraMatrix)
     public
       constructor Create(h, w, def: integer);
   end; {<@abstract(Класс целочисленной матрицы)}
 
-  FeyraStrMatrix = class(FeyraMatrix)
+  FeyraStrMatrix = class(TFeyraMatrix)
     public
       constructor Create(h, w: integer; def: string);
   end; {<@abstract(Класс строковой матрицы)}
 
-  FeyraCharMatrix = class(FeyraMatrix)
+  FeyraCharMatrix = class(TFeyraMatrix)
     public
       constructor Create(h, w: integer; def: char);
   end; {<@abstract(Класс символьной матрицы)}
 
-  FeyraBoolMatrix = class(FeyraMatrix)
+  FeyraBoolMatrix = class(TFeyraMatrix)
     public
       constructor Create(h, w: integer; def: boolean);
   end; {<@abstract(Класс булевой матрицы)}
 
-  FeyraRealMatrix = class(FeyraMatrix)
+  FeyraRealMatrix = class(TFeyraMatrix)
     public
       constructor Create(h, w: integer; def: real);
   end; {<@abstract(Класс числовой матрицы)}
@@ -72,39 +72,39 @@ implementation
 uses
   SysUtils;
 
-function FeyraMatrix.GetNumRows:integer;
+function TFeyraMatrix.GetNumRows:integer;
 begin
   GetNumRows := length(MRead);
 end;
 
-function FeyraMatrix.GetNumColumns:integer;
+function TFeyraMatrix.GetNumColumns:integer;
 begin
   GetNumColumns := length(MRead[0]);
 end;
 
-procedure FeyraMatrix.SetNumRows(NumRows:integer);
+procedure TFeyraMatrix.SetNumRows(NumRows:integer);
 begin
   SetLength(MRead, NumRows);
 end;
 
-procedure FeyraMatrix.SetNumColumns(NumColumns:integer);
+procedure TFeyraMatrix.SetNumColumns(NumColumns:integer);
 var
   i:integer;
 begin
   for i := 0 to Rows-1 do SetLength(MRead[i], NumColumns);
 end;
 
-function FeyraMatrix.GetCell(n,m: integer):variant;
+function TFeyraMatrix.GetCell(n,m: integer):variant;
 begin
   GetCell := Self.MRead[n-1][m-1];
 end;
 
-procedure FeyraMatrix.SetCell(n,m: integer; Value: variant);
+procedure TFeyraMatrix.SetCell(n,m: integer; Value: variant);
 begin
   Self.MRead[n-1][m-1] := Value;
 end;
 
-procedure FeyraMatrix.SetDefaultValue(DefValue:variant);
+procedure TFeyraMatrix.SetDefaultValue(DefValue:variant);
 var
   n, m: integer;
 begin
