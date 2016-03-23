@@ -1,6 +1,6 @@
 unit FeyraMatrix; //<Поддержка матриц для FreePascal
 
-{$mode objfpc}{$H+}
+{$i feyraconf.inc}
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Classes;
 
 type
-  TFeyraMatrix = class
+  FMatrix = class
     private
       type
         TypeList = (I,R,S,C,B);
@@ -44,27 +44,27 @@ type
   @member(Columns Число столбцов матрицы)
   @member(All Запрос или запись матрицы целиком)}
 
-  FeyraIntMatrix = class(TFeyraMatrix)
+  IMatrix = class(FMatrix)
     public
       constructor Create(h, w, def: integer);
   end; {<@abstract(Класс целочисленной матрицы)}
 
-  FeyraStrMatrix = class(TFeyraMatrix)
+  SMatrix = class(FMatrix)
     public
       constructor Create(h, w: integer; def: string);
   end; {<@abstract(Класс строковой матрицы)}
 
-  FeyraCharMatrix = class(TFeyraMatrix)
+  CMatrix = class(FMatrix)
     public
       constructor Create(h, w: integer; def: char);
   end; {<@abstract(Класс символьной матрицы)}
 
-  FeyraBoolMatrix = class(TFeyraMatrix)
+  BMatrix = class(FMatrix)
     public
       constructor Create(h, w: integer; def: boolean);
   end; {<@abstract(Класс булевой матрицы)}
 
-  FeyraRealMatrix = class(TFeyraMatrix)
+  RMatrix = class(FMatrix)
     public
       constructor Create(h, w: integer; def: real);
   end; {<@abstract(Класс числовой матрицы)}
@@ -72,25 +72,25 @@ type
 implementation
 
 uses
-  SysUtils;
+  SysUtils, FeyraList;
 
-function TFeyraMatrix.GetNumRows:integer;
+function FMatrix.GetNumRows:integer;
 begin
   GetNumRows := length(MRead);
 end;
 
-function TFeyraMatrix.GetNumColumns:integer;
+function FMatrix.GetNumColumns:integer;
 begin
   GetNumColumns := length(MRead[0]);
 end;
 
-procedure TFeyraMatrix.SetNumRows(NumRows:integer);
+procedure FMatrix.SetNumRows(NumRows:integer);
 begin
   SetLength(MRead, NumRows);
   SetLength(DRows, NumRows);
 end;
 
-procedure TFeyraMatrix.SetNumColumns(NumColumns:integer);
+procedure FMatrix.SetNumColumns(NumColumns:integer);
 var
   i:integer;
 begin
@@ -98,7 +98,7 @@ begin
   SetLength(DColumns, NumColumns);
 end;
 
-function TFeyraMatrix.GetCell(n,m: integer):variant;
+function FMatrix.GetCell(n,m: integer):variant;
 begin
   if n<>0 then
     if m<>0 then case Self.DCell.TypeMatrix of
@@ -131,7 +131,7 @@ begin
   end;
 end;
 
-procedure TFeyraMatrix.SetCell(n,m: integer; Value: variant);
+procedure FMatrix.SetCell(n,m: integer; Value: variant);
 var
   ci, cj: integer;
   OldDefValue: variant;
@@ -193,7 +193,7 @@ begin
   end;
 end;
 
-constructor FeyraIntMatrix.Create(h, w, def: integer);
+constructor IMatrix.Create(h, w, def: integer);
 begin
   Rows := h;
   Columns := w;
@@ -201,7 +201,7 @@ begin
   Cell[0,0] := def;
 end;
 
-constructor FeyraStrMatrix.Create(h, w: integer; def: string);
+constructor SMatrix.Create(h, w: integer; def: string);
 begin
   Rows := h;
   Columns := w;
@@ -209,7 +209,7 @@ begin
   Cell[0,0] := def;
 end;
 
-constructor FeyraCharMatrix.Create(h, w: integer; def: char);
+constructor CMatrix.Create(h, w: integer; def: char);
 begin
   Rows := h;
   Columns := w;
@@ -217,7 +217,7 @@ begin
   Cell[0,0] := def;
 end;
 
-constructor FeyraBoolMatrix.Create(h, w: integer; def: boolean);
+constructor BMatrix.Create(h, w: integer; def: boolean);
 begin
   Rows := h;
   Columns := w;
@@ -225,7 +225,7 @@ begin
   Cell[0,0] := def;
 end;
 
-constructor FeyraRealMatrix.Create(h, w: integer; def: real);
+constructor RMatrix.Create(h, w: integer; def: real);
 begin
   Rows := h;
   Columns := w;

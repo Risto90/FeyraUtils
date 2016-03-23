@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>HomerEngine: FeyraMatrix: Класс FMatrix</title>
+<meta name="generator" content="PasDoc 0.14.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<h2>HomerEngine</h2><p><a href="AllUnits.html" class="navigation">Модули</a></p><p><a href="ClassHierarchy.html" class="navigation">Иерархия классов</a></p><p><a href="AllClasses.html" class="navigation">Классы, интерфейсы и объекты</a></p><p><a href="AllTypes.html" class="navigation">Типы</a></p><p><a href="AllVariables.html" class="navigation">Переменные</a></p><p><a href="AllConstants.html" class="navigation">Константы</a></p><p><a href="AllFunctions.html" class="navigation">Процедуры и функции</a></p><p><a href="AllIdentifiers.html" class="navigation">Идентификаторы</a></p></td><td class="content">
+<a name="FMatrix"></a><h1 class="cio">Класс FMatrix</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section" href="#PasDoc-Description">Описание</a></td><td><a class="section" href="#PasDoc-Hierarchy">Иерархия</a></td><td><a class="section" href="#PasDoc-InternalTypes">Internal Types</a></td><td>Поля</td><td>Методы</td><td><a class="section" href="#PasDoc-Properties">Свойства</a></td></tr></table>
+<a name="PasDoc-Description"></a><h2 class="unit">Модуль</h2>
+<p class="unitlink">
+<a  href="FeyraMatrix.html">FeyraMatrix</a></p>
+<h2 class="declaration">Объявления</h2>
+<p class="declaration">
+<code>type FMatrix = class(TObject)</code></p>
+<h2 class="description">Описание</h2>
+<p>
+Основной класс для работы с матрицами</p>
+<p>
+   </p>
+<a name="PasDoc-Hierarchy"></a><h2 class="hierarchy">Иерархия</h2>
+<ul class="hierarchy"><li class="ancestor">TObject</li>
+<li class="thisitem">FMatrix</li></ul><h2 class="overview">Обзор</h2>
+<a name="PasDoc-InternalTypes"></a><h3 class="summary">Internal Types</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code><b><a  href="FeyraMatrix.FMatrix.html#TypeList">TypeList</a></b> = (...);</code></td>
+</tr>
+</table>
+<a name="PasDoc-Properties"></a><h3 class="summary">Свойства</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="FeyraMatrix.FMatrix.html#Rows">Rows</a></b>: integer read GetNumRows write SetNumRows;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="FeyraMatrix.FMatrix.html#Columns">Columns</a></b>: integer read GetNumColumns write SetNumColumns;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="FeyraMatrix.FMatrix.html#All">All</a></b>: Matrix read MRead write MRead;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a  href="FeyraMatrix.FMatrix.html#Cell">Cell</a></b>[n,m:integer]: variant read GetCell write SetCell;</code></td>
+</tr>
+</table>
+<h2 class="description">Описание</h2>
+<h3 class="detail">Internal Types</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="TypeList"></a><code><b>TypeList</b> = (...);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;<h6 class="description_section">Значение</h6>
+<ul>
+<li>
+I: &nbsp;</li>
+<li>
+R: &nbsp;</li>
+<li>
+S: &nbsp;</li>
+<li>
+C: &nbsp;</li>
+<li>
+B: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<h3 class="detail">Свойства</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Rows"></a><code>property <b>Rows</b>: integer read GetNumRows write SetNumRows;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Число строк матрицы</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Columns"></a><code>property <b>Columns</b>: integer read GetNumColumns write SetNumColumns;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Число столбцов матрицы</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="All"></a><code>property <b>All</b>: Matrix read MRead write MRead;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Запрос или запись матрицы целиком</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Cell"></a><code>property <b>Cell</b>[n,m:integer]: variant read GetCell write SetCell;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Сгенерировал <a  href="http://pasdoc.sourceforge.net/">PasDoc 0.14.0</a>. </em>
+</span>
+</td></tr></table></body></html>
